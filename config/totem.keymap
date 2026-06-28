@@ -260,11 +260,6 @@
             layers = <0>;
         };
 
-        right_alt {
-            bindings = <&kp RIGHT_ALT>;
-            key-positions = <16 17>;
-        };
-
         ctrl+grave {
             bindings = <&kp LC(GRAVE)>;
             key-positions = <24 23>;
@@ -331,7 +326,7 @@
         layer_4 {
             display-name = "layer4";
             bindings = <
-              &kp LEFT_WIN      &mkp MB2        &mmv MOVE_UP      &mkp MB1         &none              &none           &none           &kp UP          &none            &none
+              &kp LEFT_WIN      &mkp MB2        &mmv MOVE_UP      &mkp MB1         &none              &none           &kp HOME        &kp UP          &kp END          &none
               &kp LEFT_CONTROL  &mmv MOVE_LEFT  &mmv MOVE_DOWN    &mmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
 &kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP    &msc SCRL_LEFT    &msc SCRL_DOWN   &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
                                                 &kp LEFT_CONTROL  &kp LEFT_ALT     &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
