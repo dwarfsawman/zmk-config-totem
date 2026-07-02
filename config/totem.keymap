@@ -153,16 +153,14 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press>,
+                <&macro_tap>,
                 <&kp GLOBE>,
                 <&macro_press>,
                 <&kp LEFT_ALT>,
                 <&macro_tap>,
                 <&kp GRAVE>,
                 <&macro_release>,
-                <&kp LEFT_ALT>,
-                <&macro_tap>,
-                <&kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT>;
+                <&kp LEFT_ALT>;
 
             label = "IME_TOGGLE";
         };
