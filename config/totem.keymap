@@ -260,8 +260,8 @@
             layers = <0>;
         };
 
-        ctrl+grave {
-            bindings = <&kp LC(GRAVE)>;
+        terminal_toggle {
+            bindings = <&kp F13>;
             key-positions = <24 23>;
         };
     };
