@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT
+
+description: Mouse movement that stops when a configured layer is deactivated
+
+compatible: "zmk,behavior-gated-mouse-move"
+
+include: one_param.yaml
+
+properties:
+  bindings:
+    type: phandles
+    required: true
+    description: The mouse movement behavior to invoke
+  stop-layer:
+    type: int
+    required: true
+    description: The layer whose deactivation releases all active movements

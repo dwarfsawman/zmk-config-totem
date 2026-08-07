@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+
+config ZMK_BEHAVIOR_GATED_MOUSE_MOVE
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_GATED_MOUSE_MOVE_ENABLED
+    depends on ZMK_POINTING
