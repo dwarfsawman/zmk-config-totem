@@ -312,7 +312,7 @@
             display-name = "Upper";
             bindings = <
            &kp TILDE      &kp DOT          &kp ASTRK            &kp AMPS          &kp AT      &kp PRCNT  &kp LBKT          &kp LPAR        &kp RPAR               &kp RBKT
-           &hml LCTRL LT  &hml LSHFT PIPE  &hml LEFT_ALT MINUS  &hmr LEFT_GUI GT  &kp FSLH    &kp EXCL   &hmr RMETA COMMA  &hml RALT LBRC  &hmr RIGHT_SHIFT RBRC  &hmr RCTRL SEMI
+           &hml LCTRL LT  &hml LSHFT PIPE  &hml LEFT_ALT MINUS  &hmr LEFT_GUI GT  &kp FSLH    &kp EXCL   &hmr RMETA COMMA  &hmr RALT LBRC  &hmr RIGHT_SHIFT RBRC  &hmr RCTRL SEMI
 &kp UNDER  &kp GRAVE      &kp SQT          &kp DQT              &kp PLUS          &kp BSLH    &kp HASH   &kp CARET         &kp COLON       &kp EQUAL              &kp DLLR         &kp QMARK
                                            &trans               &trans            &none       &trans     &trans            &trans
             >;
@@ -334,10 +334,10 @@
         layer_4 {
             display-name = "layer4";
             bindings = <
-              &kp LEFT_WIN      &mkp MB2         &gmmv MOVE_UP      &mkp MB1         &none              &none           &kp HOME        &kp UP          &kp END          &none
-              &kp LEFT_CONTROL  &gmmv MOVE_LEFT  &gmmv MOVE_DOWN    &gmmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
-&kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP    &msc SCRL_LEFT    &msc SCRL_DOWN   &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
-                                                &kp LEFT_CONTROL  &kp LEFT_ALT     &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
+              &kp LEFT_WIN      &mkp MB2         &gmmv MOVE_UP     &mkp MB1          &none              &none           &kp HOME        &kp UP          &kp END          &none
+              &kp LEFT_CONTROL  &gmmv MOVE_LEFT  &gmmv MOVE_DOWN   &gmmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
+&kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP     &msc SCRL_LEFT    &msc SCRL_DOWN    &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
+                                                 &kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
             >;
         };
     };
