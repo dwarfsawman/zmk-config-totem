@@ -269,8 +269,13 @@
         };
 
         terminal_toggle {
-            bindings = <&kp F13>;
+            bindings = <&kp LS(F1)>;
             key-positions = <24 23>;
+        };
+
+        toggle_agentpanel {
+            bindings = <&kp LS(F2)>;
+            key-positions = <11 10>;
         };
     };
 
