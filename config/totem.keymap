@@ -269,17 +269,17 @@
         };
 
         terminal_toggle {
-            bindings = <&kp LS(F1)>;
+            bindings = <&kp F13>;
             key-positions = <24 23>;
         };
 
         toggle_agentpanel {
-            bindings = <&kp LS(F2)>;
+            bindings = <&kp F14>;
             key-positions = <0 1>;
         };
 
         toggle_projectpanel {
-            bindings = <&kp LS(F3)>;
+            bindings = <&kp F3>;
             key-positions = <3 4>;
         };
     };
