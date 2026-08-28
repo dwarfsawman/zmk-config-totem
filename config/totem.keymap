@@ -279,7 +279,7 @@
         };
 
         toggle_projectpanel {
-            bindings = <&kp F3>;
+            bindings = <&kp F15>;
             key-positions = <3 4>;
         };
     };
