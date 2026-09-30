@@ -214,7 +214,7 @@ jobs:
       - name: Verify built Consumer HID descriptor
         if: matrix.shield == 'totem_left'
         run: |
-          python "${GITHUB_WORKSPACE}/scripts/verify_consumer_hid.py" "${{ env.build_dir }}/zephyr/zmk.uf2"
+          python3 "${GITHUB_WORKSPACE}/scripts/verify_consumer_hid.py" "${{ env.build_dir }}/zephyr/zmk.uf2"
 
       - name: Rename artifacts
         shell: sh -x {0}
