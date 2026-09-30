@@ -1,0 +1,24 @@
+diff --git a/app/include/zmk/hid.h b/app/include/zmk/hid.h
+--- a/app/include/zmk/hid.h
++++ b/app/include/zmk/hid.h
+@@ -28,7 +28,7 @@
+ #if IS_ENABLED(CONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_BASIC)
+ #define ZMK_HID_CONSUMER_MAX_USAGE 0xFF
+ #elif IS_ENABLED(CONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_FULL)
+-#define ZMK_HID_CONSUMER_MAX_USAGE 0xFFF
++#define ZMK_HID_CONSUMER_MAX_USAGE 0x2FF
+ #else
+ #error "Unknown consumer report usages configuration"
+ #endif
+@@ -174,9 +174,9 @@
+     HID_REPORT_SIZE(0x08),
+ #elif IS_ENABLED(CONFIG_ZMK_HID_CONSUMER_REPORT_USAGES_FULL)
+     HID_LOGICAL_MIN8(0x00),
+-    HID_LOGICAL_MAX16(0xFF, 0x0F),
++    HID_LOGICAL_MAX16(0xFF, 0x02),
+     HID_USAGE_MIN8(0x00),
+-    HID_USAGE_MAX16(0xFF, 0x0F),
++    HID_USAGE_MAX16(0xFF, 0x02),
+     HID_REPORT_SIZE(0x10),
+ #else
+ #error "A proper consumer HID report usage range must be selected"
