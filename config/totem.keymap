@@ -282,6 +282,11 @@
             bindings = <&kp F15>;
             key-positions = <3 4>;
         };
+
+        insert {
+            bindings = <&kp INSERT>;
+            key-positions = <16 17>;
+        };
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
