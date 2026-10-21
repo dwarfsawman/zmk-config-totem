@@ -8,6 +8,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // Existing layers 0..4 retain their numbering.
+
 #define MAYA_MODEL 5
 #define MAYA_ANIM  6
 #define MAYA_RIGHT 7
@@ -16,9 +17,9 @@
 
 / {
     behaviors {
-
         // Maya is operated with one hand. Do not reuse the opposite-hand
         // positional restrictions, prior-idle or quick-tap settings of hml.
+
         maya_cs: maya_ctrl_shift {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Maya Ctrl Shift";
@@ -55,6 +56,7 @@
             tapping-term-ms = <180>;
             bindings = <&mo>, <&kp>;
         };
+
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Home Row Mod L";
@@ -208,7 +210,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_tap>,
-                <&kp GLOBE>,
+                <&kp LC(SPACE)>,
                 <&macro_press>,
                 <&kp LEFT_ALT>,
                 <&macro_tap>,
@@ -260,6 +262,7 @@
 
         // Left outer pinky + upper inner-index key: enter/exit Maya.
         // Positions are from the full 38-key transform, not left-only indices.
+
         combo_maya_enter {
             timeout-ms = <50>;
             key-positions = <20 4>;
@@ -369,7 +372,6 @@
             bindings = <&kp F15>;
             key-positions = <3 4>;
         };
-
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
@@ -446,50 +448,50 @@
         maya_model_layer {
             display-name = "Maya Model";
             bindings = <
-                &kp Q  &kp W  &kp E  &kp R  &kp T  &trans  &trans  &trans  &trans  &trans
-                &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D  &maya_gui LGUI F  &kp G  &trans  &trans  &trans  &trans  &trans
-                &maya_lt MAYA_FN ESC  &kp Z  &kp X  &kp C  &kp V  &kp B  &trans  &trans  &trans  &trans  &trans  &trans
-                &maya_lt MAYA_NUM ENTER  &kp SPACE  &maya_lt MAYA_RIGHT TAB  &trans  &trans  &trans
+                      &kp Q             &kp W             &kp E                    &kp R             &kp T                      &trans  &trans  &trans  &trans  &trans
+                      &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D         &maya_gui LGUI F  &kp G                      &trans  &trans  &trans  &trans  &trans
+&maya_lt MAYA_FN ESC  &kp Z             &kp X             &kp C                    &kp V             &kp B                      &trans  &trans  &trans  &trans  &trans  &trans
+                                                          &maya_lt MAYA_NUM ENTER  &kp SPACE         &maya_lt MAYA_RIGHT TAB    &trans  &trans  &trans
             >;
         };
 
         maya_anim_layer {
             display-name = "Maya Anim";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &kp LA(V)  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &kp COMMA  &kp DOT  &kp K  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans     &trans   &trans  &trans       &trans  &trans  &trans  &trans  &trans
+        &trans  &trans     &trans   &trans  &kp LA(V)    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp COMMA  &kp DOT  &kp K   &trans       &trans  &trans  &trans  &trans  &trans  &trans
+                           &trans   &trans  &trans       &trans  &trans  &trans
             >;
         };
 
         maya_right_layer {
             display-name = "Maya Right";
             bindings = <
-                &kp H  &kp Y  &kp I  &kp P  &kp O  &trans  &trans  &trans  &trans  &trans
-                &kp U  &kp J  &kp K  &kp L  &kp N  &trans  &trans  &trans  &trans  &trans
-                &trans  &tog MAYA_ANIM  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans
+        &kp H           &kp Y  &kp I      &kp P    &kp O       &trans  &trans  &trans  &trans  &trans
+        &kp U           &kp J  &kp K      &kp L    &kp N       &trans  &trans  &trans  &trans  &trans
+&trans  &tog MAYA_ANIM  &kp M  &kp COMMA  &kp DOT  &kp FSLH    &trans  &trans  &trans  &trans  &trans  &trans
+                               &trans     &trans   &trans      &trans  &trans  &trans
             >;
         };
 
         maya_num_layer {
             display-name = "Maya Num";
             bindings = <
-                &kp N7  &kp N8  &kp N9  &kp MINUS  &kp BACKSPACE  &trans  &trans  &trans  &trans  &trans
-                &kp N4  &kp N5  &kp N6  &kp DOT  &kp ENTER  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp N1  &kp N2  &kp N3  &kp N0  &kp TAB  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans
+        &kp N7  &kp N8  &kp N9  &kp MINUS  &kp BACKSPACE    &trans  &trans  &trans  &trans  &trans
+        &kp N4  &kp N5  &kp N6  &kp DOT    &kp ENTER        &trans  &trans  &trans  &trans  &trans
+&trans  &kp N1  &kp N2  &kp N3  &kp N0     &kp TAB          &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans     &trans           &trans  &trans  &trans
             >;
         };
 
         maya_fn_layer {
             display-name = "Maya Fn";
             bindings = <
-                &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &trans  &trans  &trans  &trans  &trans
-                &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp F6  &kp F7  &kp LC(A)  &kp LS(S)  &kp LC(N1)  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans
+        &kp F1  &kp F2  &kp F3     &kp F4     &kp F5        &trans  &trans  &trans  &trans  &trans
+        &kp F8  &kp F9  &kp F10    &kp F11    &kp F12       &trans  &trans  &trans  &trans  &trans
+&trans  &kp F6  &kp F7  &kp LC(A)  &kp LS(S)  &kp LC(N1)    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans     &trans     &trans        &trans  &trans  &trans
             >;
         };
     };
