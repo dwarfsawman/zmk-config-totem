@@ -1,3 +1,35 @@
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+
+// Existing layers 0..4 retain their numbering.
+#define MAYA_MODEL 5
+#define MAYA_ANIM  6
+#define MAYA_RIGHT 7
+#define MAYA_NUM   8
+#define MAYA_FN    9
+
+/ {
+    behaviors {
+
+        // Maya is operated with one hand. Do not reuse the opposite-hand
+        // positional restrictions, prior-idle or quick-tap settings of hml.
+        maya_cs: maya_ctrl_shift {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Maya Ctrl Shift";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <180>;
+            hold-while-undecided;
+            bindings = <&kp>, <&kp>;
+        };
+
+        maya_alt: maya_alt_mod {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Maya Alt";
             #binding-cells = <2>;
@@ -5,6 +37,7 @@
             tapping-term-ms = <170>;
             bindings = <&kp>, <&kp>;
         };
+
         maya_gui: maya_gui_mod {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Maya Win";
@@ -13,6 +46,7 @@
             tapping-term-ms = <250>;
             bindings = <&kp>, <&kp>;
         };
+
         maya_lt: maya_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Maya Layer Tap";
@@ -30,9 +64,11 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
             hold-trigger-on-release;
         };
+
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Home Row Mod R";
@@ -42,9 +78,11 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
             hold-trigger-on-release;
         };
+
         ltt: layer_tap_thumb {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Layer-Tap";
@@ -54,48 +92,60 @@
             quick-tap-ms = <175>;
             bindings = <&mo>, <&kp>;
         };
+
         bt0: bt_profile_0 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Bluetooth Profile 0";
             #binding-cells = <0>;
             bindings = <&macro_bt0>, <&bt BT_CLR>;
         };
+
         bt1: bt_profile_1 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Bluetooth Profile 1";
             #binding-cells = <0>;
             bindings = <&macro_bt1>, <&bt BT_CLR>;
         };
+
         bt2: bt_profile_2 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Bluetooth Profile 2";
             #binding-cells = <0>;
             bindings = <&macro_bt2>, <&bt BT_CLR>;
         };
+
         sqtundr: shift_squote_underscore {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SQT>, <&kp UNDER>;
+
             mods = <(MOD_LSFT)>;
         };
+
         dotcolon: shift_dot_colon {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp COLON>;
+
             mods = <(MOD_LSFT)>;
         };
+
         mindqt: shift_minus_dquote {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp DQT>;
+
             mods = <(MOD_LSFT)>;
         };
+
         commsemi: shift_comma_semicolon {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SEMI>;
+
             mods = <(MOD_LSFT)>;
         };
+
         lmt: layer_mouse_thumb {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Layer-Tap";
@@ -104,16 +154,20 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&mo>, <&mkp>;
+
             label = "LAYER_MOUSE_THUMB";
         };
+
         rpinky_i_ctrl: rpinky_i_ctrl {
             compatible = "zmk,behavior-mod-morph";
             label = "RPINKY_I_CTRL";
             bindings = <&ltt 4 I>, <&kp LEFT_CONTROL>;
+
             #binding-cells = <0>;
             keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
             mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RGUI|MOD_RSFT|MOD_RALT)>;
         };
+
         gmmv: gated_mouse_move {
             compatible = "zmk,behavior-gated-mouse-move";
             #binding-cells = <1>;
@@ -122,28 +176,33 @@
             display-name = "Gated Mouse Move";
         };
     };
+
     macros {
         macro_bt0: bt_profile_0_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 0>;
         };
+
         macro_bt1: bt_profile_1_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 1>;
         };
+
         macro_bt2: bt_profile_2_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 2>;
         };
+
         win_Shift: win_Shift {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&sk LEFT_GUI &sk LEFT_SHIFT>;
             label = "WIN_SHIFT";
         };
+
         ime_toggle_hybrid: ime_toggle {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -156,8 +215,282 @@
                 <&kp GRAVE>,
                 <&macro_release>,
                 <&kp LEFT_ALT>;
+
             label = "IME_TOGGLE";
         };
+
         alt_funcfour: alt_funcfour {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            bindings = <&kp LA(F4)>;
+            label = "ALT_FUNCFOUR";
+        };
+
+        ctrl_c: ctrl_c {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(C)>;
+            label = "CTRL_C";
+        };
+
+        ctrl_v: ctrl_v {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(V)>;
+            label = "CTRL_V";
+        };
+
+        ctrl_x: ctrl_x {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(X)>;
+            label = "CTRL_X";
+        };
+
+        win_ctrl: win_ctrl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&sk LEFT_GUI &sk LCTRL>;
+            label = "WIN_CTRL";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        // Left outer pinky + upper inner-index key: enter/exit Maya.
+        // Positions are from the full 38-key transform, not left-only indices.
+        combo_maya_enter {
+            timeout-ms = <50>;
+            key-positions = <20 4>;
+            layers = <0>;
+            bindings = <&to MAYA_MODEL>;
+        };
+
+        combo_maya_exit {
+            timeout-ms = <50>;
+            key-positions = <20 4>;
+            layers = <MAYA_MODEL MAYA_ANIM MAYA_RIGHT MAYA_NUM MAYA_FN>;
+            bindings = <&to 0>;
+        };
+
+        combo_maya_insert {
+            timeout-ms = <40>;
+            key-positions = <2 3>; // E + R, middle + index.
+            layers = <MAYA_MODEL MAYA_ANIM>;
+            bindings = <&kp INSERT>;
+        };
+
+        combo_maya_delete {
+            timeout-ms = <40>;
+            key-positions = <1 2>; // W + E.
+            layers = <MAYA_MODEL MAYA_ANIM>;
+            bindings = <&kp DELETE>;
+        };
+
+        combo_maya_backspace {
+            timeout-ms = <40>;
+            key-positions = <0 1>; // Q + W.
+            layers = <MAYA_MODEL MAYA_ANIM>;
+            bindings = <&kp BACKSPACE>;
+        };
+
+        combo_tab {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <175>;
+            key-positions = <1 2>; // LD
+            layers = <0>;
+            bindings = <&kp TAB>;
+        };
+
+        combo_spc_lower {
+            timeout-ms = <30>;
+            key-positions = <1 2>;
+            layers = <1>;
+            bindings = <&kp SPACE>;
+        };
+
+        combo_del {
+            timeout-ms = <30>;
+            key-positions = <22 23>; // XM
+            layers = <0>;
+            bindings = <&kp DEL>;
+        };
+
+        combo_bspc_upper {
+            timeout-ms = <30>;
+            key-positions = <7 8>; // OU
+            layers = <2>;
+            bindings = <&kp BSPC>;
+        };
+
+        combo_ime_toggle {
+            timeout-ms = <30>;
+            key-positions = <13 12>; // SH
+            layers = <0>;
+            bindings = <&ime_toggle_hybrid>;
+        };
+
+        combo_caps_word {
+            layers = <0 1 2 3 4>; // Legacy layers only.
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <14 13 15>;
+        };
+
+        close_window {
+            bindings = <&alt_funcfour>;
+            key-positions = <11 12 13>;
+            slow-release;
+            timeout-ms = <30>;
+            layers = <4>;
+        };
+
+        application {
+            bindings = <&kp K_APP>;
+            key-positions = <13 11>;
+            timeout-ms = <60>;
+            layers = <0>;
+        };
+
+        terminal_toggle {
+            layers = <0 1 2 3 4>; // Legacy layers only.
+            bindings = <&kp F13>;
+            key-positions = <24 23>;
+        };
+
+        toggle_agentpanel {
+            layers = <0 1 2 3 4>; // Legacy layers only.
+            bindings = <&kp F14>;
+            key-positions = <0 1>;
+        };
+
+        toggle_projectpanel {
+            layers = <0 1 2 3 4>; // Legacy layers only.
+            bindings = <&kp F15>;
+            key-positions = <3 4>;
+        };
+
+    };
+
+    conditional_layers { compatible = "zmk,conditional-layers"; };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        /* Base (default), Graphite alphas
+         */
+
+        base_layer {
+            display-name = "Base";
+            bindings = <
+         &kp B         &kp L              &kp D            &kp W            &kp Z            &sqtundr      &kp F             &kp O             &kp U               &kp J
+         &hml LCTRL N  &hml LEFT_SHIFT R  &hml LEFT_ALT T  &hml LEFT_GUI S  &kp G            &kp Y         &hmr RIGHT_GUI H  &hmr RIGHT_ALT A  &hmr RIGHT_SHIFT E  &rpinky_i_ctrl
+&kp ESC  &kp Q         &kp X              &kp M            &kp C            &kp V            &kp K         &kp P             &dotcolon         &mindqt             &commsemi       &hmr RCTRL TAB
+                                          &kp DELETE       &ltt 2 SPACE     &kp BACKSPACE    &ltt 1 ENTER  &lmt 1 MB1        &lmt 3 MB2
+            >;
+        };
+
+        /* Numbers, Navigation
+         */
+
+        lower_layer {
+            display-name = "Lower";
+            bindings = <
+           &kp KP_MINUS  &kp N7  &kp N8  &kp N9  &kp KP_PLUS        &kp PRCNT  &kp UP_ARROW   &kp LPAR              &kp RPAR               &kp KP_DOT
+           &kp N0        &kp N4  &kp N5  &kp N6  &kp EQUAL          &kp LEFT   &kp RIGHT_GUI  &hmr RIGHT_ALT RIGHT  &hmr RIGHT_SHIFT LBKT  &hmr RCTRL RBKT
+&kp COLON  &kp KP_SLASH  &kp N1  &kp N2  &kp N3  &kp KP_ASTERISK    &kp HOME   &kp PG_DN      &dotcolon             &kp END                &kp X            &kp B
+                                 &trans  &trans  &trans             &none      &trans         &trans
+            >;
+        };
+
+        /* Symbols
+         */
+
+        upper_layer {
+            display-name = "Upper";
+            bindings = <
+           &kp TILDE      &kp DOT          &kp ASTRK            &kp AMPS          &kp AT      &kp PRCNT  &kp LBKT          &kp LPAR        &kp RPAR               &kp RBKT
+           &hml LCTRL LT  &hml LSHFT PIPE  &hml LEFT_ALT MINUS  &hmr LEFT_GUI GT  &kp FSLH    &kp EXCL   &hmr RMETA COMMA  &hmr RALT LBRC  &hmr RIGHT_SHIFT RBRC  &hmr RCTRL SEMI
+&kp UNDER  &kp GRAVE      &kp SQT          &kp DQT              &kp PLUS          &kp BSLH    &kp HASH   &kp CARET         &kp COLON       &kp EQUAL              &kp DLLR         &kp QMARK
+                                           &trans               &trans            &none       &trans     &trans            &trans
+            >;
+        };
+
+        /* Media, Mouse, Keyboard control
+         */
+
+        adjust_layer {
+            display-name = "Adjust";
+            bindings = <
+            &kp F1        &kp F2        &kp F3    &kp F4    &kp F5        &kp F6          &kp F7          &kp F8           &kp F9           &kp F10
+            &kp LEFT_ALT  &none         &mkp MB2  &mkp MB1  &bt BT_CLR    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none            &kp F11
+&kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &bt0      &bt1      &bt2          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP     &msc SCRL_RIGHT  &kp F13  &kp F12
+                                        &none     &none     &none         &none           &none           &none
+            >;
+        };
+
+        layer_4 {
+            display-name = "layer4";
+            bindings = <
+              &kp LEFT_WIN      &mkp MB2         &gmmv MOVE_UP     &mkp MB1          &none              &none           &kp HOME        &kp UP          &kp END          &none
+              &kp LEFT_CONTROL  &gmmv MOVE_LEFT  &gmmv MOVE_DOWN   &gmmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
+&kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP     &msc SCRL_LEFT    &msc SCRL_DOWN    &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
+                                                 &kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
+            >;
+        };
+
+        // Left positions: 0..4 / 10..14 / 20(outer),21..25 / 32..34(thumbs).
+        // All right-half positions remain transparent to the existing map.
+        // Priority: MODEL < ANIM < RIGHT < NUM < FN.
+
+        maya_model_layer {
+            display-name = "Maya Model";
+            bindings = <
+                &kp Q  &kp W  &kp E  &kp R  &kp T  &trans  &trans  &trans  &trans  &trans
+                &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D  &maya_gui LGUI F  &kp G  &trans  &trans  &trans  &trans  &trans
+                &maya_lt MAYA_FN ESC  &kp Z  &kp X  &kp C  &kp V  &kp B  &trans  &trans  &trans  &trans  &trans  &trans
+                &maya_lt MAYA_NUM ENTER  &kp SPACE  &maya_lt MAYA_RIGHT TAB  &trans  &trans  &trans
+            >;
+        };
+
+        maya_anim_layer {
+            display-name = "Maya Anim";
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &kp LA(V)  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &kp COMMA  &kp DOT  &kp K  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        maya_right_layer {
+            display-name = "Maya Right";
+            bindings = <
+                &kp H  &kp Y  &kp I  &kp P  &kp O  &trans  &trans  &trans  &trans  &trans
+                &kp U  &kp J  &kp K  &kp L  &kp N  &trans  &trans  &trans  &trans  &trans
+                &trans  &tog MAYA_ANIM  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        maya_num_layer {
+            display-name = "Maya Num";
+            bindings = <
+                &kp N7  &kp N8  &kp N9  &kp MINUS  &kp BACKSPACE  &trans  &trans  &trans  &trans  &trans
+                &kp N4  &kp N5  &kp N6  &kp DOT  &kp ENTER  &trans  &trans  &trans  &trans  &trans
+                &trans  &kp N1  &kp N2  &kp N3  &kp N0  &kp TAB  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        maya_fn_layer {
+            display-name = "Maya Fn";
+            bindings = <
+                &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &trans  &trans  &trans  &trans  &trans
+                &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans
+                &trans  &kp F6  &kp F7  &kp LC(A)  &kp LS(S)  &kp LC(N1)  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+    };
+};
