@@ -267,7 +267,7 @@
             timeout-ms = <30>;
             key-positions = <11 12 13>;
             layers = <2>;
-            bindings = <&to 6>;
+            bindings = <&to 4>;
         };
 
         combo_maya_exit {
