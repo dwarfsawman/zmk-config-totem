@@ -264,16 +264,16 @@
         // Positions are from the full 38-key transform, not left-only indices.
 
         combo_maya_enter {
-            timeout-ms = <50>;
-            key-positions = <20 4>;
-            layers = <0>;
+            timeout-ms = <30>;
+            key-positions = <11 12 13>;
+            layers = <2>;
             bindings = <&to MAYA_MODEL>;
         };
 
         combo_maya_exit {
-            timeout-ms = <50>;
-            key-positions = <20 4>;
-            layers = <MAYA_MODEL MAYA_ANIM MAYA_RIGHT MAYA_NUM MAYA_FN>;
+            timeout-ms = <30>;
+            key-positions = <11 12 13>;
+            layers = <5 6 7 8 9>;
             bindings = <&to 0>;
         };
 
@@ -448,10 +448,10 @@
         maya_model_layer {
             display-name = "Maya Model";
             bindings = <
-                      &kp Q             &kp W             &kp E                    &kp R             &kp T                      &trans  &trans  &trans  &trans  &trans
-                      &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D         &maya_gui LGUI F  &kp G                      &trans  &trans  &trans  &trans  &trans
-&maya_lt MAYA_FN ESC  &kp Z             &kp X             &kp C                    &kp V             &kp B                      &trans  &trans  &trans  &trans  &trans  &trans
-                                                          &maya_lt MAYA_NUM ENTER  &kp SPACE         &maya_lt MAYA_RIGHT TAB    &trans  &trans  &trans
+                      &kp Q             &kp W             &kp E                    &kp R             &kp T                         &trans  &trans  &trans  &trans  &trans
+                      &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D         &maya_gui LGUI F  &kp G                         &trans  &trans  &trans  &trans  &rpinky_i_ctrl
+&maya_lt MAYA_FN ESC  &kp Z             &kp X             &kp C                    &kp V             &kp B                         &trans  &trans  &trans  &trans  &trans          &trans
+                                                          &maya_lt MAYA_NUM ENTER  &maya_lt 8 SPACE  &maya_lt MAYA_RIGHT DELETE    &trans  &trans  &trans
             >;
         };
 
@@ -478,10 +478,10 @@
         maya_num_layer {
             display-name = "Maya Num";
             bindings = <
-        &kp N7  &kp N8  &kp N9  &kp MINUS  &kp BACKSPACE    &trans  &trans  &trans  &trans  &trans
-        &kp N4  &kp N5  &kp N6  &kp DOT    &kp ENTER        &trans  &trans  &trans  &trans  &trans
-&trans  &kp N1  &kp N2  &kp N3  &kp N0     &kp TAB          &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans     &trans           &trans  &trans  &trans
+         &kp MINUS  &kp N7  &kp N8  &kp N9  &kp BACKSPACE    &trans  &trans  &trans  &trans  &trans
+         &kp N0     &kp N4  &kp N5  &kp N6  &kp ENTER        &trans  &trans  &trans  &trans  &trans
+&kp TAB  &kp DOT    &kp N1  &kp N2  &kp N3  &kp DOT          &trans  &trans  &trans  &trans  &trans  &trans
+                            &trans  &trans  &trans           &trans  &trans  &trans
             >;
         };
 
