@@ -163,7 +163,7 @@
         rpinky_i_ctrl: rpinky_i_ctrl {
             compatible = "zmk,behavior-mod-morph";
             label = "RPINKY_I_CTRL";
-            bindings = <&ltt 4 I>, <&kp LEFT_CONTROL>;
+            bindings = <&ltt 9 I>, <&kp LEFT_CONTROL>;
 
             #binding-cells = <0>;
             keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI|MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)>;
@@ -267,34 +267,34 @@
             timeout-ms = <30>;
             key-positions = <11 12 13>;
             layers = <2>;
-            bindings = <&to MAYA_MODEL>;
+            bindings = <&to 6>;
         };
 
         combo_maya_exit {
             timeout-ms = <30>;
             key-positions = <11 12 13>;
-            layers = <5 6 7 8 9>;
+            layers = <6 4 7 7 8>;
             bindings = <&to 0>;
         };
 
         combo_maya_insert {
             timeout-ms = <40>;
             key-positions = <2 3>; // E + R, middle + index.
-            layers = <MAYA_MODEL MAYA_ANIM>;
+            layers = <6 4>;
             bindings = <&kp INSERT>;
         };
 
         combo_maya_delete {
             timeout-ms = <40>;
             key-positions = <1 2>; // W + E.
-            layers = <MAYA_MODEL MAYA_ANIM>;
+            layers = <6 4>;
             bindings = <&kp DELETE>;
         };
 
         combo_maya_backspace {
             timeout-ms = <40>;
             key-positions = <0 1>; // Q + W.
-            layers = <MAYA_MODEL MAYA_ANIM>;
+            layers = <6 4>;
             bindings = <&kp BACKSPACE>;
         };
 
@@ -335,7 +335,7 @@
         };
 
         combo_caps_word {
-            layers = <0 1 2 3 4>; // Legacy layers only.
+            layers = <0 1 2 5 9>; // Legacy layers only.
             bindings = <&kp CAPSLOCK>;
             key-positions = <14 13 15>;
         };
@@ -345,7 +345,7 @@
             key-positions = <11 12 13>;
             slow-release;
             timeout-ms = <30>;
-            layers = <4>;
+            layers = <9>;
         };
 
         application {
@@ -356,19 +356,19 @@
         };
 
         terminal_toggle {
-            layers = <0 1 2 3 4>; // Legacy layers only.
+            layers = <0 1 2 5 9>; // Legacy layers only.
             bindings = <&kp F13>;
             key-positions = <24 23>;
         };
 
         toggle_agentpanel {
-            layers = <0 1 2 3 4>; // Legacy layers only.
+            layers = <0 1 2 5 9>; // Legacy layers only.
             bindings = <&kp F14>;
             key-positions = <0 1>;
         };
 
         toggle_projectpanel {
-            layers = <0 1 2 3 4>; // Legacy layers only.
+            layers = <0 1 2 5 9>; // Legacy layers only.
             bindings = <&kp F15>;
             key-positions = <3 4>;
         };
@@ -388,12 +388,9 @@
          &kp B         &kp L              &kp D            &kp W            &kp Z            &sqtundr      &kp F             &kp O             &kp U               &kp J
          &hml LCTRL N  &hml LEFT_SHIFT R  &hml LEFT_ALT T  &hml LEFT_GUI S  &kp G            &kp Y         &hmr RIGHT_GUI H  &hmr RIGHT_ALT A  &hmr RIGHT_SHIFT E  &rpinky_i_ctrl
 &kp ESC  &kp Q         &kp X              &kp M            &kp C            &kp V            &kp K         &kp P             &dotcolon         &mindqt             &commsemi       &hmr RCTRL TAB
-                                          &kp DELETE       &ltt 2 SPACE     &kp BACKSPACE    &ltt 1 ENTER  &lmt 1 MB1        &lmt 3 MB2
+                                          &kp DELETE       &ltt 2 SPACE     &kp BACKSPACE    &ltt 1 ENTER  &lmt 1 MB1        &lmt 5 MB2
             >;
         };
-
-        /* Numbers, Navigation
-         */
 
         lower_layer {
             display-name = "Lower";
@@ -405,9 +402,6 @@
             >;
         };
 
-        /* Symbols
-         */
-
         upper_layer {
             display-name = "Upper";
             bindings = <
@@ -417,9 +411,6 @@
                                            &trans               &trans            &none       &trans     &trans            &trans
             >;
         };
-
-        /* Media, Mouse, Keyboard control
-         */
 
         adjust_layer {
             display-name = "Adjust";
@@ -431,27 +422,13 @@
             >;
         };
 
-        layer_4 {
-            display-name = "layer4";
-            bindings = <
-              &kp LEFT_WIN      &mkp MB2         &gmmv MOVE_UP     &mkp MB1          &none              &none           &kp HOME        &kp UP          &kp END          &none
-              &kp LEFT_CONTROL  &gmmv MOVE_LEFT  &gmmv MOVE_DOWN   &gmmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
-&kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP     &msc SCRL_LEFT    &msc SCRL_DOWN    &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
-                                                 &kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
-            >;
-        };
-
-        // Left positions: 0..4 / 10..14 / 20(outer),21..25 / 32..34(thumbs).
-        // All right-half positions remain transparent to the existing map.
-        // Priority: MODEL < ANIM < RIGHT < NUM < FN.
-
         maya_model_layer {
             display-name = "Maya Model";
             bindings = <
-                      &kp Q             &kp W             &kp E                    &kp R             &kp T                         &trans  &trans  &trans  &trans  &trans
-                      &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D         &maya_gui LGUI F  &kp G                         &trans  &trans  &trans  &trans  &rpinky_i_ctrl
-&maya_lt MAYA_FN ESC  &kp Z             &kp X             &kp C                    &kp V             &kp B                         &trans  &trans  &trans  &trans  &trans          &trans
-                                                          &maya_lt MAYA_NUM ENTER  &maya_lt 8 SPACE  &maya_lt MAYA_RIGHT DELETE    &trans  &trans  &trans
+                &kp Q             &kp W             &kp E             &kp R             &kp T                &trans  &trans  &trans  &trans  &trans
+                &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D  &maya_gui LGUI F  &kp G                &trans  &trans  &trans  &trans  &rpinky_i_ctrl
+&maya_lt 8 ESC  &kp Z             &kp X             &kp C             &kp V             &kp B                &trans  &trans  &trans  &trans  &trans          &trans
+                                                    &maya_lt 7 ENTER  &maya_lt 7 SPACE  &maya_lt 7 DELETE    &trans  &trans  &trans
             >;
         };
 
@@ -468,10 +445,10 @@
         maya_right_layer {
             display-name = "Maya Right";
             bindings = <
-        &kp H           &kp Y  &kp I      &kp P    &kp O       &trans  &trans  &trans  &trans  &trans
-        &kp U           &kp J  &kp K      &kp L    &kp N       &trans  &trans  &trans  &trans  &trans
-&trans  &tog MAYA_ANIM  &kp M  &kp COMMA  &kp DOT  &kp FSLH    &trans  &trans  &trans  &trans  &trans  &trans
-                               &trans     &trans   &trans      &trans  &trans  &trans
+        &kp H   &kp Y  &kp I      &kp P    &kp O       &trans  &trans  &trans  &trans  &trans
+        &kp U   &kp J  &kp K      &kp L    &kp N       &trans  &trans  &trans  &trans  &trans
+&trans  &tog 4  &kp M  &kp COMMA  &kp DOT  &kp FSLH    &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans     &trans   &trans      &trans  &trans  &trans
             >;
         };
 
@@ -492,6 +469,16 @@
         &kp F8  &kp F9  &kp F10    &kp F11    &kp F12       &trans  &trans  &trans  &trans  &trans
 &trans  &kp F6  &kp F7  &kp LC(A)  &kp LS(S)  &kp LC(N1)    &trans  &trans  &trans  &trans  &trans  &trans
                         &trans     &trans     &trans        &trans  &trans  &trans
+            >;
+        };
+
+        layer_nav {
+            display-name = "layer4";
+            bindings = <
+              &kp LEFT_WIN      &mkp MB2         &gmmv MOVE_UP     &mkp MB1          &none              &none           &kp HOME        &kp UP          &kp END          &none
+              &kp LEFT_CONTROL  &gmmv MOVE_LEFT  &gmmv MOVE_DOWN   &gmmv MOVE_RIGHT  &msc SCRL_RIGHT    &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT        &none
+&kp LEFT_ALT  &kp C_VOL_DN      &kp C_VOL_UP     &msc SCRL_LEFT    &msc SCRL_DOWN    &msc SCRL_UP       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT  &none  &none
+                                                 &kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_SHIFT     &mkp RCLK       &mkp LCLK       &mkp MCLK
             >;
         };
     };
