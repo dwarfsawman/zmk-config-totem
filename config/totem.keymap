@@ -425,10 +425,10 @@
         maya_model_layer {
             display-name = "Maya Model";
             bindings = <
-                &kp Q             &kp W             &kp E             &kp R             &kp T                &trans  &trans  &trans  &trans  &trans
-                &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D  &maya_gui LGUI F  &kp G                &trans  &trans  &trans  &trans  &rpinky_i_ctrl
-&maya_lt 8 ESC  &kp Z             &kp X             &kp C             &kp V             &kp B                &trans  &trans  &trans  &trans  &trans          &trans
-                                                    &maya_lt 7 ENTER  &maya_lt 7 SPACE  &maya_lt 6 DELETE    &trans  &trans  &trans
+                &kp Q             &kp W             &kp E             &kp R             &kp T                   &kp Y   &kp U                  &kp I                  &kp O             &kp P
+                &maya_cs LCTRL A  &maya_cs LSHFT S  &maya_alt LALT D  &maya_gui LGUI F  &kp G                   &kp H   &maya_gui RIGHT_WIN J  &maya_alt RIGHT_ALT K  &maya_cs RCTRL L  &rpinky_i_ctrl
+&maya_lt 8 ESC  &kp Z             &kp X             &kp C             &kp V             &kp B                   &kp N   &kp M                  &trans                 &trans            &trans          &trans
+                                                    &maya_lt 7 ENTER  &maya_lt 7 SPACE  &maya_lt 6 BACKSPACE    &trans  &trans                 &trans
             >;
         };
 
