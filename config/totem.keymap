@@ -313,13 +313,6 @@
             bindings = <&kp SPACE>;
         };
 
-        combo_del {
-            timeout-ms = <30>;
-            key-positions = <22 23>; // XM
-            layers = <0>;
-            bindings = <&kp DEL>;
-        };
-
         combo_bspc_upper {
             timeout-ms = <30>;
             key-positions = <7 8>; // OU
@@ -380,12 +373,12 @@
 
         combo_maya_undo {
             bindings = <&kp LC(Z)>;
-            key-positions = <11 10>;
+            key-positions = <23 22>;
         };
 
         combo_maya_redo {
             bindings = <&kp LC(Y)>;
-            key-positions = <10 11 12>;
+            key-positions = <21 22 23>;
         };
     };
 
