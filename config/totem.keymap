@@ -460,8 +460,8 @@
         maya_right_layer {
             display-name = "Maya Right";
             bindings = <
-        &kp H         &kp Y              &kp I            &kp P            &kp O       &trans  &trans  &trans  &trans  &trans
-        &hml LCTRL U  &hml LEFT_SHIFT J  &hml LEFT_ALT K  &hml LEFT_WIN L  &kp N       &trans  &trans  &trans  &trans  &trans
+        &kp H         &kp J              &kp I            &kp P            &kp O       &trans  &trans  &trans  &trans  &trans
+        &hml LCTRL U  &hml LEFT_SHIFT Y  &hml LEFT_ALT K  &hml LEFT_WIN L  &kp N       &trans  &trans  &trans  &trans  &trans
 &trans  &tog 5        &kp M              &kp COMMA        &kp DOT          &kp FSLH    &trans  &trans  &trans  &trans  &trans  &trans
                                          &trans           &trans           &trans      &trans  &trans  &trans
             >;
